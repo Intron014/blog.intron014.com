@@ -1,7 +1,7 @@
 baseURL = 'https://blog.intron014.com'
 languageCode = 'en-us'
 title = 'Intron014'
-theme = 'archie'
+theme = 'Archie'
 copyright = '© Intron014'
 
 paginate = 3
