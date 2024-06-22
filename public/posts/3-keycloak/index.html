@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html><head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>401 - Unauthorized - Intron014</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Keycloak, a new beginning?" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="http://localhost:1313/posts/3-keycloak/">
+  <meta property="og:site_name" content="Intron014">
+  <meta property="og:title" content="401 - Unauthorized">
+  <meta property="og:description" content="Keycloak, a new beginning?">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-05-19T00:00:00+02:00">
+    <meta property="article:modified_time" content="2023-05-19T00:00:00+02:00">
+    <meta property="article:tag" content="Docker">
+    <meta property="article:tag" content="SSO">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="401 - Unauthorized">
+  <meta name="twitter:description" content="Keycloak, a new beginning?">
+<script src="http://localhost:1313/js/feather.min.js"></script>
+	
+	
+        <link href="http://localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://localhost:1313/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css" media="(prefers-color-scheme: dark)"  />
+	
+
+	
+	
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
+	
+		
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']],
+				displayMath: [['$$','$$'], ['\[','\]']],
+				processEscapes: true,
+				processEnvironments: true,
+				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+				TeX: { equationNumbers: { autoNumber: "AMS" },
+						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+			}
+		});
+		</script>
+	
+
+	
+	
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+		
+		
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body, {
+							delimiters: [
+									{left: "$$", right: "$$", display: true},
+									{left: "$", right: "$", display: false}
+							]
+					});
+			});
+			</script>
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="http://localhost:1313/">Intron014</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/posts">All posts</a>
+		
+		<a href="/about">About</a>
+		
+		<a href="/tags">Tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">401 - Unauthorized</h1>
+			<div class="meta">Posted on May 19, 2023</div>
+		</div>
+		
+
+		<section class="body">
+			<p>It all began that day&hellip; when we decided to use a <a href="https://url.intron014.com/nIbmm">SSO</a> called <a href="https://url.intron014.com/eP51J">Keycloak</a> for all the server services that we have, such as Grafana, Gitea, Portainer, Cloudflare Tunnels&hellip; It was all going great, so well in fact, that we decided to remove the root account in Portainer in favour of the new fancy SSO, so we all got our new administrator accounts and all well and good, right?</p>
+<p><img src="/static/522092326.png" alt="Keycloak"></p>
+<p>Wrong. Apparently the username that is given inside Portainer is the key to all, and if changed, Portainer wouldn&rsquo;t be able to ID the user, therefore, kicking them out. Yeah&hellip; that&rsquo;s what happenned, and to two of us, what are the chances?!</p>
+<p>We scrambled looking inside Portainer&rsquo;s .sqlite file to find the usernames and change them, to no avail unfortunately. We were devastated after several hours trying to find a solution and trying to contact the third member of the server (who was vacationing somewhere with very poor cell reception), so the only thing that was left to do was to wait&hellip;</p>
+<p><img src="/static/546897457.png" alt="PhpMyAdmin"></p>
+<p>But wait! &ldquo;What if we changed the username in Keycloak to the one that is in Portainer?&rdquo; - I said.</p>
+<p>And so I did, entering the almighty <a href="https://url.intron014.com/IjQLZ">phpMyAdmin</a> and trying to find the database that was holding all our usernames.
+Once it was changed&hellip; voilá! There it was! Portainer in all it&rsquo;s admin glory.</p>
+<p>So, moral of the story? If it works, don&rsquo;t you dare touch it! :)</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/docker">Docker</a></li>
+					
+					<li><a href="/tags/sso">SSO</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/intron014" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://twitter.com/intron014/" rel="me" title="Twitter"><i data-feather="twitter"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © Intron014 |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

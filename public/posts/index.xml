@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Intron014</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Intron014</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>© Intron014</copyright>
+    <lastBuildDate>Fri, 19 May 2023 00:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>401 - Unauthorized</title>
+      <link>http://localhost:1313/posts/3-keycloak/</link>
+      <pubDate>Fri, 19 May 2023 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/3-keycloak/</guid>
+      <description>It all began that day&amp;hellip; when we decided to use a SSO called Keycloak for all the server services that we have, such as Grafana, Gitea, Portainer, Cloudflare Tunnels&amp;hellip; It was all going great, so well in fact, that we decided to remove the root account in Portainer in favour of the new fancy SSO, so we all got our new administrator accounts and all well and good, right?&#xA;Wrong. Apparently the username that is given inside Portainer is the key to all, and if changed, Portainer wouldn&amp;rsquo;t be able to ID the user, therefore, kicking them out.</description>
+    </item>
+    <item>
+      <title>Lo que nosotros construimos y lo que watchtower destruyó</title>
+      <link>http://localhost:1313/posts/2-watchtower/</link>
+      <pubDate>Fri, 28 Apr 2023 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2-watchtower/</guid>
+      <description>Todo empezó porque un amigo de la uni y yo decidimos comprar (¿alquilar?) una VPS de contabo, en específico la VPS S ya que no necesitamos tanta potencia (o eso pensábamos).&#xA;Decidimos usar una combinación de Docker y Portainer (Business Edition, por supuesto) ya que Proxmox es demasiado para lo que teníamos en mente. Y así, los contenedores fueron apareciendo, comenzando por Homepage y Homer para tener algún lugar para acceder a los servicios rápidamente, después vino, tras muchas horas investigando opciones, Uptime Kuma, un maravilloso sistema para monitorizar nuestros contenedores y poder arreglarlo lo antes posible (y sinceramente, lo hace bastante simple con su integración de WebHooks de Discord y bots de Telegram).</description>
+    </item>
+    <item>
+      <title>printf(&#34;Hello World&#34;);</title>
+      <link>http://localhost:1313/posts/1-printf/</link>
+      <pubDate>Thu, 27 Apr 2023 13:45:50 +0200</pubDate>
+      <guid>http://localhost:1313/posts/1-printf/</guid>
+      <description>#include &amp;lt;stdio.h&amp;gt; void main(){ char hi[12]; int i=0; while(i&amp;lt;12){ switch (i){ case 0: hi[i]=&amp;#39;h&amp;#39;; i++; break; case 1: hi[i]=&amp;#39;e&amp;#39;; i++; break; case 2: hi[i]=&amp;#39;l&amp;#39;; i++; break; case 3: hi[i]=&amp;#39;l&amp;#39;; i++; break; case 4: hi[i]=&amp;#39;o&amp;#39;; i++; break; case 5: hi[i]=&amp;#39; &amp;#39;; i++; break; case 6: hi[i]=&amp;#39;w&amp;#39;; i++; break; case 7: hi[i]=&amp;#39;o&amp;#39;; i++; break; case 8: hi[i]=&amp;#39;r&amp;#39;; i++; break; case 9: hi[i]=&amp;#39;l&amp;#39;; i++; break; case 10: hi[i]=&amp;#39;d&amp;#39;; i++; break; case 11: hi[i]=&amp;#39;\0&amp;#39;; i++; break; } } printf(&amp;#34;%s&amp;#34;, hi); } </description>
+    </item>
+  </channel>
+</rss>

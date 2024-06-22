@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html><head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Lo que nosotros construimos y lo que watchtower destruyó - Intron014</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Jorge e Ibai se adentran a la aventura de... Docker" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="http://localhost:1313/posts/2-watchtower/">
+  <meta property="og:site_name" content="Intron014">
+  <meta property="og:title" content="Lo que nosotros construimos y lo que watchtower destruyó">
+  <meta property="og:description" content="Jorge e Ibai se adentran a la aventura de... Docker">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-04-28T00:00:00+02:00">
+    <meta property="article:modified_time" content="2023-04-28T00:00:00+02:00">
+    <meta property="article:tag" content="Docker">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Lo que nosotros construimos y lo que watchtower destruyó">
+  <meta name="twitter:description" content="Jorge e Ibai se adentran a la aventura de... Docker">
+<script src="http://localhost:1313/js/feather.min.js"></script>
+	
+	
+        <link href="http://localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://localhost:1313/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css" media="(prefers-color-scheme: dark)"  />
+	
+
+	
+	
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
+	
+		
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']],
+				displayMath: [['$$','$$'], ['\[','\]']],
+				processEscapes: true,
+				processEnvironments: true,
+				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+				TeX: { equationNumbers: { autoNumber: "AMS" },
+						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+			}
+		});
+		</script>
+	
+
+	
+	
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+		
+		
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body, {
+							delimiters: [
+									{left: "$$", right: "$$", display: true},
+									{left: "$", right: "$", display: false}
+							]
+					});
+			});
+			</script>
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="http://localhost:1313/">Intron014</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/posts">All posts</a>
+		
+		<a href="/about">About</a>
+		
+		<a href="/tags">Tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Lo que nosotros construimos y lo que watchtower destruyó</h1>
+			<div class="meta">Posted on Apr 28, 2023</div>
+		</div>
+		
+
+		<section class="body">
+			<p>Todo empezó porque un amigo de la uni y yo decidimos comprar (¿alquilar?) una VPS de <a href="https://url.intron014.com/rvwbH">contabo</a>, en específico la <a href="https://url.intron014.com/gPAwZ">VPS S</a> ya que no necesitamos <strong>tanta</strong> potencia (o eso pensábamos).</p>
+<p>Decidimos usar una combinación de Docker y Portainer (Business Edition, por supuesto) ya que Proxmox es demasiado para lo que teníamos en mente. Y así, los contenedores fueron apareciendo, comenzando por <a href="https://github.com/benphelps/homepage">Homepage</a> y <a href="https://github.com/bastienwirtz/homer">Homer</a> para tener algún lugar para acceder a los servicios rápidamente, después vino, tras muchas horas investigando opciones, <a href="https://github.com/louislam/uptime-kuma">Uptime Kuma</a>, un maravilloso sistema para monitorizar nuestros contenedores y poder arreglarlo lo antes posible (y sinceramente, lo hace bastante simple con su integración de WebHooks de Discord y bots de Telegram). <a href="https://status.intron014.com">Aquí</a> está el resultado final.</p>
+<p>En fin, y así continuamos con un acortador de enlaces, <a href="https://github.com/shlinkio/shlink">Shlink</a> y demás, hasta que nos topamos con un pequeño problema&hellip; Los contenedores no se actualizan solos, y teniendo en cuenta que pasamos de un par de contenedores a tener más de veinte en menos de dos semanas, esto se podía comenzar a complicar&hellip; Por suerte (o no tanta), encontramos <a href="https://github.com/containrrr/watchtower">Watchtower</a>, una herramienta que, cuando está configurada correctamente, es super poderosa, actualizando los contenedores que lo requieran en la hora que quieras (No como otros&hellip; Windows, te estoy mirando a ti). Todo genial, ¿no?. Pues no.</p>
+<p>Pasaron los días, y las actualizaciones vinieron y fueron hasta que&hellip; <strong>BAM</strong>, alertas de Uptime Kuma por todos lados. ¡Umami se ha caido! - Me dijo Ibai, mi compañero de servidor) - ¡Grafana no va! - Dije yo - Y así continuamente hasta que la avalancha de contenedores acabó&hellip; ¿Que qué ha pasado os preguntais?, nosotros también, pero teníamos un claro culpable&hellip; Watchtower.</p>
+<p>Debido a que tampoco éramos expertos en Docker ni Docker Compose, algunos volúmenes no estaban bien montados provocando la pérdida de unas cuantas horas de configuración, algunas etiquetas de versión estaban fijas (patata:69.54), haciendo que los contenedores que dependían de ello, al actualizarse, dejaran de soportar esa versión&hellip; En fin, un disaster total, pero mejor con 30 contenedores que teniendo un servidor con 500&hellip; En el fondo, ese va a ser mi trabajo cuando salga de la carrera.</p>
+<p>Pero vamos, que de esto se puede sacar una buena lección&hellip; <em>aprender a usar bien Docker Compose y configurar bien los contenedores</em> :)</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/docker">docker</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/intron014" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://twitter.com/intron014/" rel="me" title="Twitter"><i data-feather="twitter"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © Intron014 |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

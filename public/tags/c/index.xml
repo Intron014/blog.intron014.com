@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on Intron014</title>
+    <link>http://localhost:1313/tags/c/</link>
+    <description>Recent content in C on Intron014</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>© Intron014</copyright>
+    <lastBuildDate>Thu, 27 Apr 2023 13:45:50 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>printf(&#34;Hello World&#34;);</title>
+      <link>http://localhost:1313/posts/printf/</link>
+      <pubDate>Thu, 27 Apr 2023 13:45:50 +0200</pubDate>
+      <guid>http://localhost:1313/posts/printf/</guid>
+      <description>#include &amp;lt;stdio.h&amp;gt; void main(){ char hi[12]; int i=0; while(i&amp;lt;12){ switch (i){ case 0: hi[i]=&amp;#39;h&amp;#39;; i++; break; case 1: hi[i]=&amp;#39;e&amp;#39;; i++; break; case 2: hi[i]=&amp;#39;l&amp;#39;; i++; break; case 3: hi[i]=&amp;#39;l&amp;#39;; i++; break; case 4: hi[i]=&amp;#39;o&amp;#39;; i++; break; case 5: hi[i]=&amp;#39; &amp;#39;; i++; break; case 6: hi[i]=&amp;#39;w&amp;#39;; i++; break; case 7: hi[i]=&amp;#39;o&amp;#39;; i++; break; case 8: hi[i]=&amp;#39;r&amp;#39;; i++; break; case 9: hi[i]=&amp;#39;l&amp;#39;; i++; break; case 10: hi[i]=&amp;#39;d&amp;#39;; i++; break; case 11: hi[i]=&amp;#39;\0&amp;#39;; i++; break; } } printf(&amp;#34;%s&amp;#34;, hi); } </description>
+    </item>
+  </channel>
+</rss>
